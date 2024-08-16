@@ -1,13 +1,60 @@
-body {
-  margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+@import url("https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Montserrat:ital,wght@0,100..900;1,100..900&family=Poppins&display=swap");
+/* using root variables for colors to make the code much simpler and can be used globally like if in case wer want to change a particular color from our page we will just change it from root variable & that's it. Refer documentation for more */
+:root {
+  --white: #fff;
+  --black: #111;
+  --blue: #3a80e9;
+  --grey: #888;
+  --darkgrey: #1b1b1b;
+  --green: #35af00;
+  --red: #f94141;
+  --yellow: #ff0;
+  --gold: #ffd700;
+  --lgreen: #90ee90;
+  --neon: #74ee15;
 }
 
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
+body {
+  margin: 0;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  background-color: var(--black);
+  color: var(--white);
+  /* height: 200vh; */
+  font-family: "Inter", sans-serif;
+}
+
+/* creating custom selection */
+
+::selection {
+  background-color: var(--blue);
+  color: var(--white);
+}
+
+/* creating custom scrollbar */
+
+/* width */
+::-webkit-scrollbar {
+  width: 0.3rem;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+  background: var(--black);
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background: var(--grey);
+  border-radius: 3rem;
+}
+a {
+  color: var(--white) !important;
+  text-decoration: none;
+}
+/* disabling image dragging*/
+img {
+  user-drag: none;
+  -webkit-user-drag: none;
+  -moz-user-select: none;
 }

@@ -1,0 +1,76 @@
+.navbar {
+  color: var(--white);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1.5rem 3rem;
+  position: sticky;
+  top: 0;
+  left: 0;
+  background-color: var(--black);
+}
+.logo {
+  font-size: 1.2rem;
+  display: flex;
+  align-items: center;
+  text-align: center;
+  justify-content: space-between;
+  /* margin: 1rem 1.5rem; */
+  left: 10%;
+}
+.sperax-logo {
+  height: 2.5rem;
+  width: 2.5rem;
+  border-radius: 20%;
+  /* display: flex; */
+  margin: 1rem 1.5rem;
+}
+.links {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  gap: 1.5rem;
+}
+
+.link {
+  color: var(--grey);
+  font-weight: 600;
+  font-size: 1rem;
+}
+
+/* hovering effect */
+
+.link:hover {
+  color: var(--white);
+  transition: all 0.3s;
+}
+/* for less 800px view on mobile phones*/
+.mobile-drawer {
+  display: none;
+}
+/* using media queries which uses block of css properties only when the certain  condition is true so here we are using it for responsiveness of our webapp */
+
+@media only screen and (max-width: 800px) {
+  .logo {
+    font-size: 1rem;
+  }
+  .navbar {
+    padding: 1.5rem;
+  }
+  .links {
+    display: none;
+  }
+  .link {
+    font-size: 0.8rem;
+  }
+  .mobile-drawer {
+    display: block;
+  }
+  /* styling mui drawer*/
+  .drawer-div {
+    width: 40vw;
+    background-color: var(--black);
+    height: 100vh;
+    padding: 1.5rem;
+  }
+}
