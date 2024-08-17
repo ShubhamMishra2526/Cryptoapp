@@ -7,9 +7,12 @@ import PaginationComponent from "../components/dashboard/pagination";
 import Loader from "../components/common/Loader";
 import BackToTop from "../components/common/BackToTop";
 import { useWallet } from "../components/wallet";
+import "./styles.css";
+import Button from "../components/common/button";
 
 function DashboardPage() {
-  const { walletAddress, ethBalance, tokens, connectWallet } = useWallet();
+  const { walletAddress, ethBalance, tokens, connectWallet, disconnectWallet } =
+    useWallet();
   const [coins, setCoins] = useState([]);
   const [paginatedCoins, setPaginatedCoins] = useState([]);
   const [search, setSearch] = useState("");
@@ -53,30 +56,50 @@ function DashboardPage() {
   return (
     <>
       <Header />
-      <div style={{ padding: "20px" }}>
-        <h1>Wallet Dashboard</h1>
+      <div style={{ padding: "20px" }} className="grey-wrapper">
+        <h1 className="wallet-db">Your Wallet</h1>
         {walletAddress ? (
           <>
-            <h2>Connected Wallet: {walletAddress}</h2>
-            <h2>Ethereum Balance: {ethBalance} ETH</h2>
-            <h3>Token Balances:</h3>
-            <ul>
+            <h2 className="bal grey-wrapper">
+              <span className="eth-bal">Ethereum Balance:</span> {ethBalance}
+              ETH
+            </h2>
+            <h3 className="token-bal">Token Balances:</h3>
+            <ol className="token-list">
               {tokens.map((token) => (
                 <li key={token.name}>
                   {token.name}: {token.balance}
                 </li>
               ))}
-            </ul>
+            </ol>
+            <Button
+              text={"Disconnect Wallet"}
+              onClick={disconnectWallet}
+              style={{
+                padding: "10px 20px",
+                fontSize: "16px",
+                marginTop: "20px",
+                backgroundColor: "#f44336",
+                color: "#fff",
+                border: "none",
+                borderRadius: "5px",
+                cursor: "pointer",
+              }}
+            />
           </>
         ) : (
-          <button
+          <Button
+            text={"Connect Wallet"}
+            outlined={true}
             onClick={connectWallet}
-            style={{ padding: "10px 20px", fontSize: "16px" }}
-          >
-            Connect Wallet
-          </button>
+            style={{
+              color: "var(--purple)",
+              padding: "10px 20px",
+              fontSize: "16px",
+              width: "20%",
+            }}
+          />
         )}
-        <DashboardPage />
       </div>
       <BackToTop />
       {isLoading ? (

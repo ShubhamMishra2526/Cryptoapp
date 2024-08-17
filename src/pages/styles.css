@@ -1,0 +1,47 @@
+.wallet-db {
+  display: flex;
+  text-align: center;
+  color: var(--neon);
+  justify-content: center;
+  align-items: center;
+  text-decoration: underline;
+  /* background-color: var(--darkgrey); */
+  border-radius: 1rem;
+}
+.bal {
+  display: flex;
+  text-align: center;
+  color: var(--grey);
+  justify-content: center;
+  align-items: center;
+  gap: 2rem;
+}
+.eth-bal {
+  display: flex;
+  text-align: left;
+  color: var(--white);
+  justify-content: center;
+  align-items: center;
+  text-decoration: underline;
+  gap: 2rem;
+}
+.token-bal {
+  display: flex;
+  text-align: left;
+  color: var(--purple);
+  justify-content: center;
+  align-items: center;
+  text-decoration: underline;
+  gap: 2rem;
+  background-color: var(--yellow);
+  border-radius: 1rem;
+}
+.token-list {
+  text-align: left;
+  color: var(--grey);
+  justify-content: center;
+  align-items: center;
+  display: block;
+  gap: 2rem;
+  background-color: var(--darkgrey);
+}

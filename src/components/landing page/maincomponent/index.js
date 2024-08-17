@@ -10,7 +10,7 @@ import { Link } from "react-router-dom";
 import { useWallet } from "../../wallet";
 
 function MainComponent() {
-  const { walletAddress, ethBalance, tokens, connectWallet } = useWallet();
+  const { walletAddress, connectWallet, disconnectWallet } = useWallet();
   return (
     <div className="flex-info">
       <div className="left-component">
@@ -46,12 +46,7 @@ function MainComponent() {
           transition={{ duration: 0.8, delay: 1.5 }}
         >
           {walletAddress && walletAddress.length > 0 ? (
-            <Link to="/mydashboard">
-              <Button
-                text={"dashboard"}
-                onClick={() => console.log("Btn clicked")}
-              />
-            </Link>
+            <Button text={"disconnectWallet"} onClick={disconnectWallet} />
           ) : (
             <Link to="/dashboard">
               <Button

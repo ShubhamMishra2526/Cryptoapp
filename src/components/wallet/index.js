@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import Web3 from "web3";
 import { ethers } from "ethers";
+import { useNavigate } from "react-router-dom";
 
 const ERC20_ABI = [
   {
@@ -23,6 +24,7 @@ export const useWallet = () => {
   const [walletAddress, setWalletAddress] = useState("");
   const [ethBalance, setEthBalance] = useState("0");
   const [tokens, setTokens] = useState([]);
+  const navigate = useNavigate();
 
   useEffect(() => {
     getCurrentWalletConnected();
@@ -47,6 +49,15 @@ export const useWallet = () => {
     }
   };
 
+  const disconnectWallet = () => {
+    setWalletAddress("");
+    setEthBalance("0");
+    setTokens([]);
+    alert(
+      "Please disconnect your wallet from the MetaMask extension by clicking on the top right corner icon and selecting 'Disconnect'."
+    );
+  };
+
   const getCurrentWalletConnected = async () => {
     if (window.ethereum) {
       try {
@@ -69,13 +80,17 @@ export const useWallet = () => {
     }
   };
 
+  const handleAccountsChanged = (accounts) => {
+    if (accounts.length > 0) {
+      setWalletAddress(accounts[0]);
+      fetchEthBalance(accounts[0]);
+      fetchTokens(accounts[0]);
+    }
+  };
+
   const addWalletListener = () => {
     if (window.ethereum) {
-      window.ethereum.on("accountsChanged", (accounts) => {
-        setWalletAddress(accounts[0]);
-        fetchEthBalance(accounts[0]);
-        fetchTokens(accounts[0]);
-      });
+      window.ethereum.on("accountsChanged", handleAccountsChanged);
     } else {
       setWalletAddress("");
       console.log("Please install Metamask");
@@ -127,5 +142,5 @@ export const useWallet = () => {
     setTokens(balances);
   };
 
-  return { walletAddress, ethBalance, tokens, connectWallet };
+  return { walletAddress, ethBalance, tokens, connectWallet, disconnectWallet };
 };
