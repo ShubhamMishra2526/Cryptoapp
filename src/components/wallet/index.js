@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from "react";
 import Web3 from "web3";
 import { ethers } from "ethers";
-import { useNavigate } from "react-router-dom";
 
 const ERC20_ABI = [
   {
@@ -24,7 +23,6 @@ export const useWallet = () => {
   const [walletAddress, setWalletAddress] = useState("");
   const [ethBalance, setEthBalance] = useState("0");
   const [tokens, setTokens] = useState([]);
-  const navigate = useNavigate();
 
   useEffect(() => {
     getCurrentWalletConnected();
