@@ -3,11 +3,25 @@ import Header from "../components/common/header";
 import TabsComponent from "../components/dashboard/Tabs";
 import axios from "axios";
 import Search from "../components/dashboard/search";
+import PaginationComponent from "../components/dashboard/pagination";
+import Loader from "../components/common/Loader";
+import BackToTop from "../components/common/BackToTop";
+import { useWallet } from "../components/wallet";
 
 function DashboardPage() {
+  const { walletAddress, ethBalance, tokens, connectWallet } = useWallet();
   const [coins, setCoins] = useState([]);
+  const [paginatedCoins, setPaginatedCoins] = useState([]);
   const [search, setSearch] = useState("");
   /*making onSeatchchange and search a global */
+  const [page, setPage] = useState(1);
+  const [isLoading, setIsLoading] = useState(true);
+  const handlePageChange = (event, value) => {
+    setPage(value);
+    /* logic for slicing coins into array of setPaginatedCoins in order to avail pagination with 10 pages per page */
+    var previousIndex = (value - 1) * 10;
+    setPaginatedCoins(coins.slice(previousIndex, previousIndex + 10));
+  };
   const onSearchChange = (e) => {
     setSearch(e.target.value);
   };
@@ -27,18 +41,60 @@ function DashboardPage() {
       .then((response) => {
         console.log("RESPONSE>>>", response);
         setCoins(response.data);
+        setPaginatedCoins(response.data.slice(0, 10));
+        setIsLoading(false);
       })
       .catch((error) => {
         console.log("ERROR>>>", error);
+        setIsLoading(false);
       });
   }, []);
 
   return (
-    <div>
+    <>
       <Header />
-      <Search search={search} onSearchChange={onSearchChange} />
-      <TabsComponent coins={filteredCoins} />
-    </div>
+      <div style={{ padding: "20px" }}>
+        <h1>Wallet Dashboard</h1>
+        {walletAddress ? (
+          <>
+            <h2>Connected Wallet: {walletAddress}</h2>
+            <h2>Ethereum Balance: {ethBalance} ETH</h2>
+            <h3>Token Balances:</h3>
+            <ul>
+              {tokens.map((token) => (
+                <li key={token.name}>
+                  {token.name}: {token.balance}
+                </li>
+              ))}
+            </ul>
+          </>
+        ) : (
+          <button
+            onClick={connectWallet}
+            style={{ padding: "10px 20px", fontSize: "16px" }}
+          >
+            Connect Wallet
+          </button>
+        )}
+        <DashboardPage />
+      </div>
+      <BackToTop />
+      {isLoading ? (
+        <Loader />
+      ) : (
+        <div>
+          <Search search={search} onSearchChange={onSearchChange} />
+          {/* if searching anything then filtered coins will work otherwise show paginatedCoins */}
+          <TabsComponent coins={search ? filteredCoins : paginatedCoins} />
+          {!search && (
+            <PaginationComponent
+              page={page}
+              handlePageChange={handlePageChange}
+            />
+          )}
+        </div>
+      )}
+    </>
   );
 }
 

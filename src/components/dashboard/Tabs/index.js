@@ -5,6 +5,7 @@ import TabList from "@mui/lab/TabList";
 import TabPanel from "@mui/lab/TabPanel";
 import "./styles.css";
 import Grid from "../Grid";
+import List from "../list";
 export default function TabsComponent({ coins }) {
   /* using material ui creating tabscomponent*/
   const [value, setValue] = useState("grid");
@@ -37,9 +38,9 @@ export default function TabsComponent({ coins }) {
     <ThemeProvider theme={theme}>
       <TabContext value={value}>
         <TabList onChange={handleChange} variant="fullWidth">
-          {" "}
           {/* using fullwidth material ui feature to make our tabs comprising whole page */}
-          <Tab label="Coins" value="grid" sx={style} />
+          <Tab label="Grid" value="grid" sx={style} />
+          <Tab label="List" value="list" sx={style} />
         </TabList>
         <TabPanel value="grid">
           <div className="grid-flex">
@@ -48,6 +49,13 @@ export default function TabsComponent({ coins }) {
               return <Grid coin={coin} key={i} />;
             })}
           </div>
+        </TabPanel>
+        <TabPanel value="list">
+          <table className="list-table">
+            {coins.map((coin, i) => {
+              return <List coin={coin} key={i} />;
+            })}
+          </table>
         </TabPanel>
       </TabContext>
     </ThemeProvider>

@@ -12,6 +12,8 @@
   --gold: #ffd700;
   --lgreen: #90ee90;
   --neon: #74ee15;
+  --purple: #570987;
+  --darkpurple: #301934;
 }
 
 body {
@@ -24,6 +26,9 @@ body {
   font-family: "Inter", sans-serif;
 }
 
+html {
+  scroll-behavior: smooth;
+}
 /* creating custom selection */
 
 ::selection {
@@ -57,4 +62,12 @@ img {
   user-drag: none;
   -webkit-user-drag: none;
   -moz-user-select: none;
+}
+.grey-wrapper {
+  background-color: var(--darkpurple);
+  margin: 1.5rem auto;
+  border-radius: 1rem;
+  display: block;
+  width: 90%;
+  padding: 0rem 1rem;
 }
