@@ -8,16 +8,17 @@ const Header = () => {
   return (
     <div className="navbar">
       <h1 className="logo">
-        <img src={CompanyLogo} className="sperax-logo" />
+        <img
+          src={CompanyLogo}
+          className="sperax-logo"
+          alt="SperaxCryptoWorld"
+        />
         SperaxCryptoWorld
         <span style={{ color: "var(--blue)" }}>.</span>
       </h1>
       <div className="links">
         <Link to="/">
           <p className="link">Home</p>
-        </Link>
-        <Link to="/compare">
-          <p className="link">Compare</p>
         </Link>
         <Link to="/watchlist">
           {/*not using anchor tag as it takes some time for loading */}

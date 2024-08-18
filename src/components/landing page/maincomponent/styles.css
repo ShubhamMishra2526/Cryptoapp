@@ -4,19 +4,19 @@
   align-items: flex-start;
   padding: 0.5rem 3rem;
 }
-/* .flex-info {
-  background-image: url("../../../assets/digital-illustration-blue-yellow-sign-with-word-currency-it_717577-6652.jpg");
+.flex-info {
+  background-image: url("https://img.freepik.com/premium-photo/dark-bitcoin-themed-background-with-gradient-color-scheme_1117407-1951.jpg");
   background-size: cover;
   background-repeat: no-repeat;
   background-position: center center;
-  height: 150vh;
+  height: 80vh;
   display: flex;
-  justify-content: center;
-  align-items: center;
+  /* justify-content: center;
+  align-items: center; */
   color: white;
-  opacity: 0.5;
-  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
-} */
+
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+}
 
 .track-crypto-heading,
 .real-time-heading {
@@ -24,10 +24,10 @@
   margin: 0;
 }
 .track-crypto-heading {
-  color: var(--neon);
+  color: var(--white);
   /* adding stroke width to my text */
   -webkit-text-stroke-width: 3px;
-  -webkit-text-stroke-color: var(--green);
+  -webkit-text-stroke-color: var(--white);
   /* can also use -webkit-text-stroke: 1px black; */
 }
 .track-crypto-heading:hover {
@@ -36,11 +36,12 @@
   transition: all 0.3s;
 }
 .real-time-heading {
-  color: var(--yellow);
+  color: var(--yellow) !important;
 }
 .slogan {
   font-size: 1rem;
-  color: var(--gold);
+  color: var(--white);
+  font-weight: 600;
 }
 .btn-flex {
   display: flex;
@@ -96,6 +97,7 @@
   .flex-info {
     flex-direction: column;
     text-align: center;
+    height: 85vh;
   }
   .container {
     display: block;
