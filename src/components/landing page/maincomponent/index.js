@@ -7,9 +7,10 @@ import { motion } from "framer-motion";
 import Button from "../../common/button";
 import { Link } from "react-router-dom";
 import { useWallet } from "../../wallet";
+import TransferToken from "../../../functions/tokentransfer";
 
 function MainComponent() {
-  const { walletAddress, connectWallet, disconnectWallet } = useWallet();
+  const { walletAddress, connectWallet } = useWallet();
   return (
     <div className="flex-info">
       <div className="left-component">
@@ -45,7 +46,7 @@ function MainComponent() {
           transition={{ duration: 0.8, delay: 1.5 }}
         >
           {walletAddress && walletAddress.length > 0 ? (
-            <Button text={"disconnectWallet"} onClick={disconnectWallet} />
+            <Button text={"Transfer Token"} onClick={TransferToken} />
           ) : (
             <Link to="/dashboard">
               <Button
