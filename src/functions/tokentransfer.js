@@ -1,9 +1,9 @@
 import { ethers } from "ethers";
 import React, { useState } from "react";
-import { useWallet } from "../components/wallet";
+// import { useWallet } from "../components/wallet";
 
 function TransferToken() {
-  const [walletAddress, setWalletAddress] = useState(useWallet); // Connected wallet address
+  const [walletAddress, setWalletAddress] = useState(""); // Connected wallet address
   const [recipientAddress, setRecipientAddress] = useState(""); // Recipient address
   const [tokenAddress, setTokenAddress] = useState(""); // ERC-20 token contract address
   const [amount, setAmount] = useState(""); // Amount to transfer
