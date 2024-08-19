@@ -1,6 +1,6 @@
 Initial Setup - 
 
-0. DOWNLOAD METAMASK chrome extension from google. Made Root Variables and added fonts using Google fonts.
+0. DOWNLOAD METAMASK chrome extension from google and create a wallet. Made Root Variables and added fonts using Google fonts.
 1. Custom scroll Bar
 2. Custom selection.
 3. Disabling Image dragging + Folder Structure and code organisation.
