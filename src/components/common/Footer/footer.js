@@ -1,10 +1,10 @@
 import React from "react";
-import "./styles.css";
 import FacebookIcon from "@mui/icons-material/Facebook";
 import EmailIcon from "@mui/icons-material/Email";
 import TwitterIcon from "@mui/icons-material/Twitter";
 import InstagramIcon from "@mui/icons-material/Instagram";
 import MailOutlineRoundedIcon from "@mui/icons-material/MailOutlineRounded";
+import "./styles.css";
 
 function Footer() {
   function topFunction() {
