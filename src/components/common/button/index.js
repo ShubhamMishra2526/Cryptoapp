@@ -1,5 +1,6 @@
 import React from "react";
 import "./styles.css";
+/* custom button */
 function Button({ text, onClick, outlined }) {
   return (
     <div

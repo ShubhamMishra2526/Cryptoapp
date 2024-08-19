@@ -1,3 +1,4 @@
+/* function for converting the nummber to date in a (dd/mm/yyy) format */
 export const convertDate = (number) => {
   var myDate = new Date(number);
   return (

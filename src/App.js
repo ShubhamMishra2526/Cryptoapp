@@ -6,6 +6,7 @@ import CoinPage from "./pages/coin";
 import Watchlist from "./pages/Watchlist";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import Footer from "./components/common/Footer/footer";
 
 function App() {
   return (
@@ -24,6 +25,7 @@ function App() {
           <Route path="/watchlist" element={<Watchlist />} />
         </Routes>
       </BrowserRouter>
+      <Footer />
     </div>
   );
 }

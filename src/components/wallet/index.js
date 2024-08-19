@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import Web3 from "web3";
 import { ethers } from "ethers";
 
+/* Wallet connection through metamask */
 const ERC20_ABI = [
   {
     constant: true,
@@ -30,11 +31,14 @@ export const useWallet = () => {
   });
 
   const connectWallet = async () => {
+    /*checking if metamask is install or not*/
     if (window.ethereum) {
       try {
+        /* requesting the account from api injected by metamask "window.ethereum" */
         const accounts = await window.ethereum.request({
           method: "eth_requestAccounts",
         });
+        /* storing wallet address, ETH bbalance, Tokens available */
         setWalletAddress(accounts[0]);
         await fetchEthBalance(accounts[0]);
         await fetchTokens(accounts[0]);
@@ -47,6 +51,8 @@ export const useWallet = () => {
     }
   };
 
+  /* Wallet disconnection */
+
   const disconnectWallet = () => {
     setWalletAddress("");
     setEthBalance("0");
@@ -55,6 +61,8 @@ export const useWallet = () => {
       "Please disconnect your wallet from the MetaMask extension by clicking on the top right corner icon and selecting 'Disconnect'."
     );
   };
+
+  /* Fetching the connected account on reloading also if metamask account is still connected */
 
   const getCurrentWalletConnected = async () => {
     if (window.ethereum) {
@@ -78,6 +86,8 @@ export const useWallet = () => {
     }
   };
 
+  /* Resetting variables when changing accounts */
+
   const handleAccountsChanged = (accounts) => {
     if (accounts.length > 0) {
       setWalletAddress(accounts[0]);
@@ -85,6 +95,8 @@ export const useWallet = () => {
       fetchTokens(accounts[0]);
     }
   };
+
+  /* Changing account details when the accounts are changed */
 
   const addWalletListener = () => {
     if (window.ethereum) {
@@ -94,6 +106,8 @@ export const useWallet = () => {
       console.log("Please install Metamask");
     }
   };
+
+  /* Fetching Ethereum balance */
 
   const fetchEthBalance = async (address) => {
     if (window.ethereum) {
@@ -107,6 +121,8 @@ export const useWallet = () => {
     }
   };
 
+  /* fetching tokens present in a connected wallet */
+
   const fetchTokens = async (address) => {
     const provider = new ethers.providers.Web3Provider(window.ethereum);
     const tokensToFetch = [
@@ -118,7 +134,7 @@ export const useWallet = () => {
         name: "USDT",
         address: "0xdAC17F958D2ee523a2206206994597C13D831ec7",
       },
-      // Add more tokens here
+      // Can Add more tokens here
     ];
 
     const balances = await Promise.all(

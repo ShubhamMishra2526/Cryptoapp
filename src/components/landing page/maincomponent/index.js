@@ -7,9 +7,9 @@ import { motion } from "framer-motion";
 import Button from "../../common/button";
 import { Link } from "react-router-dom";
 import { useWallet } from "../../wallet";
-import TransferToken from "../../../functions/tokentransfer";
 
 function MainComponent() {
+  /* storing connected wallet credentials */
   const { walletAddress, connectWallet } = useWallet();
   return (
     <div className="flex-info">
@@ -45,18 +45,13 @@ function MainComponent() {
           animate={{ opacity: 1, x: 0 }}
           transition={{ duration: 0.8, delay: 1.5 }}
         >
-          {walletAddress && walletAddress.length > 0 ? (
-            <Button text={"Transfer Token"} onClick={TransferToken} />
-          ) : (
-            <Link to="/dashboard">
-              <Button
-                text={"Dashboard"}
-                onClick={() => console.log("Btn clicked")}
-              />
-            </Link>
-          )}
+          <Link to="/dashboard">
+            <Button
+              text={"Dashboard"}
+              onClick={() => console.log("Btn clicked")}
+            />
+          </Link>
 
-          {/* <Button text={"Connect Wallet"} outlined={true} /> */}
           {walletAddress && walletAddress.length > 0 ? (
             <Button
               text={`Connected: ${walletAddress.substring(

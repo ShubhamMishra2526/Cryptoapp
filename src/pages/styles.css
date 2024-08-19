@@ -28,12 +28,12 @@
 .token-bal {
   display: flex;
   text-align: left;
-  color: var(--purple);
+  color: var(--white);
   justify-content: center;
   align-items: center;
   text-decoration: underline;
   gap: 2rem;
-  background-color: var(--yellow);
+  background-color: var(--darkgrey);
   border-radius: 1rem;
 }
 .token-list {
@@ -44,4 +44,5 @@
   display: block;
   gap: 2rem;
   background-color: var(--darkgrey);
+  border-radius: 1rem;
 }

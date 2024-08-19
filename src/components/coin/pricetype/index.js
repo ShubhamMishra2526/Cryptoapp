@@ -2,6 +2,7 @@ import ToggleButton from "@mui/material/ToggleButton";
 import ToggleButtonGroup from "@mui/material/ToggleButtonGroup";
 import "./styles.css";
 
+/* Setting price type so that we can toggle among total-volumes, prices, market-caps so that the chart component can show data accordingly */
 export default function TogglePriceType({ PriceType, handlePriceTypeChange }) {
   return (
     <div className="toggle-prices">
@@ -25,6 +26,7 @@ export default function TogglePriceType({ PriceType, handlePriceTypeChange }) {
           },
         }}
       >
+        {/* toogle buttons */}
         <ToggleButton value="prices" className="toggle-btn">
           Price
         </ToggleButton>

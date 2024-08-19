@@ -12,7 +12,7 @@ function CoinInfo({ heading, description }) {
     <div className="grey-wrapper">
       <h2 className="coin-info-heading">{heading}</h2>
       {description.length > 200 ? (
-        /* using dangerouslysetinnerhtml because the anchor tags in desc is stored as a string which makes our description bit odd so to convert those anchor tags into a proper element we use this*/
+        /* using dangerouslysetinnerhtml because the anchor tags in desc is stored as a string which makes our description bit odd so to convert those anchor tags into a proper link element we use this */
         <p
           onClick={() => setFlag(!flag)}
           className="coin-info-desc"

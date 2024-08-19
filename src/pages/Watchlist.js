@@ -11,12 +11,16 @@ function Watchlist() {
     if (watchlist) {
       getData();
     }
-  }, []);
+  }, [watchlist]);
 
   const getData = async () => {
-    const allCoins = await get100Coins();
-    if (allCoins) {
-      setCoins(allCoins.filter((coin) => watchlist.includes(coin.id)));
+    try {
+      const allCoins = await get100Coins();
+      if (allCoins) {
+        setCoins(allCoins.filter((coin) => watchlist.includes(coin.id)));
+      }
+    } catch (error) {
+      console.error("Failed to fetch coins:", error.message);
     }
   };
 

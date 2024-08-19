@@ -2,6 +2,7 @@ import MenuItem from "@mui/material/MenuItem";
 import Select from "@mui/material/Select";
 import "./styles.css";
 
+/* Making the select days components so as to show the historical data the selected days component */
 export default function SelectDays({ days, handleDaysChange }) {
   return (
     <div className="select-days">

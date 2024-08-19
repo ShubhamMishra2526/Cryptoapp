@@ -1,0 +1,89 @@
+Initial Setup - 
+
+0. DOWNLOAD METAMASK chrome extension from google. Made Root Variables and added fonts using Google fonts.
+1. Custom scroll Bar
+2. Custom selection.
+3. Disabling Image dragging + Folder Structure and code organisation.
+4. Changed the title of the app in index.html present in public folder
+
+Landing page - 
+
+5. Header - Mui Drawer having home, dashboard and watchlist buttons.
+6. Text Stroke Hover animation - landing page.
+7. Framer Motion - The animation for phone and entrance animation for text.
+8. Connect Wallet Button and Dashboard/Token transfer Button to connect to your Metamask wallet.
+
+Reference : web3.js documentation https://web3js.readthedocs.io/en/v1.10.0/
+
+9. Added background image.
+
+Dashboard page - 
+
+10. Mui Tab component - for dashboard tabs (custom themed)
+11. Get real time data from Coingecko api - using axios.
+12. ToLocaleString() - adds commas to numbers and ToFixed(2) - adds 2 decimal places
+13. Converting numbers to K,M,B - custom function
+14. Search functionality - accomplished using .filter()
+15. Added a delay in the animations for our Grid and List component.
+16. Pagination Mui - slicing the data in correspondence to the page number
+17. Wrote a js function to take us to the top of the page.
+18. Used Mui icons for Trending up/down, search, addtowatchlist icons.
+19. After Wallet connection showing Ethereum balance and token balances & before wallet connection interface shows connect wallet button.
+
+Coin page - 
+
+20. Used router params to get the id of the bitcoin
+21. Used bitcoin id - to get the coins data, and prices for x number of days.
+22. Used react-chartjs-2 to make the graphs.
+23. Made a function to get the array of dates in x number of days.
+24. Used Mui Select to get the number of days, and had a function to get prices accordingly.
+25. Mui Toggle buttons for getting prices,mkt_cap,volume values.
+26. Used dangerouslySetInnerHTML attribute to render a string having html tags in it.
+27. Made a Loading component to make sure all the data was there, before rendering the components.
+28. Made a custom styled object to style Mui Components + Read More or Read Less functionality.
+
+Watchlist- 
+
+29. localstorage - adding coins in an array
+30. localstorage - removing as well.
+31. useEffect -> watchlist page
+
+Other features - 
+
+32. Using RWebShare npm package.
+33. Mui icons
+34. Seo + Code modularity and reusability.
+35. Hosted using netlify, netlify.toml file.
+36. Gradient footer - gradient animation
+37. Added toasts - react-toastify for every action.
+
+Token transfer-
+
+38. After getting connected to your wallet token transfer button is visible on dashboard page througgh which you can transfer token after entering your credentials.
+39. Inputs Required :- 1. Token Contract address(sender's address) 2. Receiver's address 3. Amount to transfer
+
+
+In order to use this website kindly install the following dependencies/libraries/components
+
+1.        "@emotion/react": "^11.13.0",    
+2.        "@emotion/styled": "^11.13.0",
+3.        "@metamask/detect-provider": "^2.0.0",
+4.        "@mui/icons-material": "^5.16.7",
+5.        "@mui/lab": "^5.0.0-alpha.173",
+6.        "@mui/material": "^5.16.7",
+7.        "axios": "^1.7.4",
+8.        "chart.js": "^4.4.3",
+9.        "ethers": "^5.7.2",
+10.       "framer-motion": "^11.3.28",
+11.       "react": "^18.3.1",
+12.       "react-chartjs-2": "^5.2.0",
+13.       "react-dom": "^18.3.1",
+14.       "react-router-dom": "^6.26.1",
+15.       "react-scripts": "5.0.1",
+16.       "react-toastify": "^10.0.5",
+17.       "web-vitals": "^2.1.4",
+18.       "web3": "^4.11.1",
+19.       "web3modal": "^1.9.12"
+
+
+       

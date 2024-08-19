@@ -8,6 +8,7 @@ const Header = () => {
   return (
     <div className="navbar">
       <h1 className="logo">
+        {/* company logo & name */}
         <img
           src={CompanyLogo}
           className="sperax-logo"
@@ -32,6 +33,7 @@ const Header = () => {
           />
         </Link>
       </div>
+      {/* mobile drawer component */}
       <div className="mobile-drawer">
         <AnchorTemporaryDrawer />
       </div>

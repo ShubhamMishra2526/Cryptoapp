@@ -1,33 +1,49 @@
-import React from "react";
+import React, { useEffect, useRef } from "react";
 import ArrowUpwardRoundedIcon from "@mui/icons-material/ArrowUpwardRounded";
 import "./styles.css";
+
 function BackToTop() {
-  // Get the button:
-  let mybutton = document.getElementById("myBtn");
+  const myButtonRef = useRef(null);
 
-  // When the user scrolls down 20px from the top of the document, show the button
-  window.onscroll = function () {
-    scrollFunction();
-  };
-
-  function scrollFunction() {
-    if (
-      document.body.scrollTop > 300 ||
-      document.documentElement.scrollTop > 300
-    ) {
-      mybutton.style.display = "flex";
-    } else {
-      mybutton.style.display = "none";
+  useEffect(() => {
+    // Function to handle scroll event
+    function scrollFunction() {
+      if (
+        document.body.scrollTop > 300 ||
+        document.documentElement.scrollTop > 300
+      ) {
+        if (myButtonRef.current) {
+          myButtonRef.current.style.display = "flex";
+        }
+      } else {
+        if (myButtonRef.current) {
+          myButtonRef.current.style.display = "none";
+        }
+      }
     }
-  }
 
-  // When the user clicks on the button, scroll to the top of the document
+    // Attach scroll event listener
+    window.addEventListener("scroll", scrollFunction);
+
+    // Cleanup event listener on component unmount
+    return () => {
+      window.removeEventListener("scroll", scrollFunction);
+    };
+  }, []); // Empty dependency array means this effect runs once on mount and cleans up on unmount
+
+  // Scroll to top function
   function topFunction() {
     document.body.scrollTop = 0; // For Safari
-    document.documentElement.scrollTop = 0; // For Chrome, Firefox, IE and Opera
+    document.documentElement.scrollTop = 0; // For Chrome, Firefox, IE, and Opera
   }
+
   return (
-    <div className="back-to-top" id="myBtn" onClick={() => topFunction()}>
+    <div
+      className="back-to-top"
+      ref={myButtonRef}
+      onClick={topFunction}
+      style={{ display: "none" }} // Initially hide the button
+    >
       <ArrowUpwardRoundedIcon style={{ color: "var(--blue)" }} />
     </div>
   );

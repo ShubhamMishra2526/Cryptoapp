@@ -97,7 +97,7 @@
   .flex-info {
     flex-direction: column;
     text-align: center;
-    height: 85vh;
+    height: 100vh;
   }
   .container {
     display: block;

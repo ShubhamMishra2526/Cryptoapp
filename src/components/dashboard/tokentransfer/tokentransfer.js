@@ -1,16 +1,18 @@
 import { ethers } from "ethers";
 import React, { useState } from "react";
-// import { useWallet } from "../components/wallet";
+import Button from "../../common/button";
+// Assuming you have a common button component
+import "./styles.css";
+import EditRoundedIcon from "@mui/icons-material/EditRounded";
 
 function TransferToken() {
-  const [walletAddress, setWalletAddress] = useState(""); // Connected wallet address
   const [recipientAddress, setRecipientAddress] = useState(""); // Recipient address
   const [tokenAddress, setTokenAddress] = useState(""); // ERC-20 token contract address
   const [amount, setAmount] = useState(""); // Amount to transfer
   const [transactionHash, setTransactionHash] = useState(""); // To store the transaction hash after successful transfer
 
   const transferToken = async () => {
-    if (!walletAddress || !recipientAddress || !tokenAddress || !amount) {
+    if (!recipientAddress || !tokenAddress || !amount) {
       console.error("Please fill in all fields.");
       return;
     }
@@ -25,7 +27,7 @@ function TransferToken() {
         tokenAddress,
         [
           // ERC-20 Token ABI: Only including the `transfer` method
-          "function transfer(address to, uint amount) returns (bool)",
+          "function transfer(address to, uint256 amount) returns (bool)",
         ],
         signer
       );
@@ -50,27 +52,34 @@ function TransferToken() {
   };
 
   return (
-    <div>
-      <h2>Transfer ERC-20 Tokens</h2>
-      <input
-        type="text"
-        placeholder="Token Contract Address"
-        value={tokenAddress}
-        onChange={(e) => setTokenAddress(e.target.value)}
-      />
-      <input
-        type="text"
-        placeholder="Recipient Address"
-        value={recipientAddress}
-        onChange={(e) => setRecipientAddress(e.target.value)}
-      />
-      <input
-        type="text"
-        placeholder="Amount to Transfer"
-        value={amount}
-        onChange={(e) => setAmount(e.target.value)}
-      />
-      <button onClick={transferToken}>Transfer Tokens</button>
+    <div className="transfer-token-container">
+      <h2 className="transfer-token">Transfer ERC-20 Tokens</h2>
+      <div className="search-flex">
+        <EditRoundedIcon />
+        <input
+          type="text"
+          placeholder="Token Contract Address"
+          value={tokenAddress}
+          onChange={(e) => setTokenAddress(e.target.value)}
+        />
+        <EditRoundedIcon />
+
+        <input
+          type="text"
+          placeholder="Recipient Address"
+          value={recipientAddress}
+          onChange={(e) => setRecipientAddress(e.target.value)}
+        />
+        <EditRoundedIcon />
+
+        <input
+          type="text"
+          placeholder="Amount to Transfer"
+          value={amount}
+          onChange={(e) => setAmount(e.target.value)}
+        />
+      </div>
+      <Button text="Transfer Tokens" onClick={transferToken} />
       {transactionHash && (
         <p>Transaction successful! Hash: {transactionHash}</p>
       )}
