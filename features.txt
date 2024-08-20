@@ -86,4 +86,11 @@ In order to use this website kindly install the following dependencies/libraries
 19.       "web3modal": "^1.9.12"
 
 
-       
+Important Instructions:-
+
+1. If not able to connect to the wallet using connect wallet button so kindly either reload the website or check if you have metamask extension and wallet or not.
+2. If opening website with link shows connection reset so kindly Reload it for some time.
+3. Tranfer token functionality work seamlessly but you must have some ETH balance so as to process the transaction.
+4. After disconnecting kindly reload the website once and the changes will be visible. 
+
+ABOVE INSTRUCTIONS ARE FOR RARE CASES AND NOT ALWAYS. AS THE WEBSITE IS SEAMLESS AND YOU CAN USE IT WITHOUT ANY INTERUPPTION. IF IN CASE YOU ENCOUNTER SUCH PROBLEMS KINDLY FOLLOW THE MENTIONED STEPS AND YOU WILL BE GOOD TO GO. ENJOY!
